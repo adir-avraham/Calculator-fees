@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>מחשבון שכ"ט</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="mycss.css">
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">מחשבון שכר טרחת עורך דין</h1>
+            <p class="lead">.מחשבון זה עורך חישוב שכר טרחת עורך דין ויתרת הפיצוי ללקוח במקרים בהם שכר הטרחה מבוסס על
+                אחוזים</p>
+        </div>
+    </div>
+    <div class="container">
+        <form class="float-xl-right col-xl-6">
+            <div class="form-group">
+                <label for="inputCompensation">הכנס/י סכום הפיצוי שהתקבל</label>
+                <input type="number" class="form-control" id="inputCompensation" placeholder="סכום הפיצוי שהתקבל">
+            </div>
+            <div class="form-group">
+                <label for="inputRateOfFees">בחר/י שיעור שכר הטרחה לחיוב</label>
+                <!-- <input type="number" class="form-control" id="inputRateOfFees" placeholder='שיעוור שכ"ט באחוזים'> -->
+                <select type="number" id="inputRateOfFees" class="form-control">
+                    <option selected>שיעור שכר טרחה באחוזים</option>
+                    <option type="number" value="8">8%</option>
+                    <option type="number" value="11">11%</option>
+                    <option type="number" value="13">13%</option>
+                    <option type="number" value="17.5">17.5%</option>
+                    <option type="number" value="20">20%</option>
+                    <option type="number" value="22.5">22.5%</option>
+                    <option type="number" value="25">25%</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="inputRateOfTax">הכנס/י שיעור מע"מ באחוזים</label>
+                <input type="number" class="form-control" id="inputRateOfTax" placeholder='שיעוור מע"מ באחוזים'>
+            </div>
+            <div class="form-group">
+                <label for="inputExpenses">הכנס/י סך הוצאות ניהול התיק</label>
+                <input type="number" class="form-control" id="inputExpenses" placeholder="סכום הוצאות ניהול התיק">
+                <small id="expenses" class="form-text text-muted">הוצאות: נסיעות, חניות, אגרות, שליחויות, דואר,
+                    צילומים וכיו"ב</small>
+            </div>
+            <button type="submit" value="Reset" class="btn btn-primary mr-2">חישוב חדש</button>
+            <button type="reset" value="Reset" class="btn btn-danger mr-2">נקה</button>
+            <button onclick="calculatecompAfterTax()" type="button" class="btn btn-success">חשב</button>
+        </form>
+        <div class="row">
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <td id="fees" scope="col"></td>
+                    <th scope="col">:(שכר טרחה (כולל מע"מ</th>
+                </tr>  
+                <tr>
+                    <td id="compensation" scope="col"></td>
+                    <th scope="col">:יתרת פיצוי ללקוח</th>
+                </tr>
+            </thead>
+        </table>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
