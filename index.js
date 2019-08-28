@@ -2,12 +2,18 @@
 // input numbers from custumer
 //=============================
 
+
 let compensationBeforeFees = document.getElementById("inputCompensation");
 let rateOfFees = document.getElementById("inputRateOfFees");
 let rateOfTax = document.getElementById("inputRateOfTax");
-const resultFees = document.getElementById("fees");
-const resultCompensation = document.getElementById("compensation");
 
+const DOM = {
+    form: document.getElementById("form"),
+    resultFees: document.getElementById("fees"),
+    resultCompensation: document.getElementById("compensation"),
+    comBeforeFees: document.getElementById("comBeforeFees"),
+    inputExpenses: document.getElementById("inputExpenses")
+}
 
 
 //convert numbers into %
@@ -33,17 +39,30 @@ function calculateFeesIncludeTax(feesIncludeTax) {
     return feesIncludeTax;
 }
 
+document.querySelector("#calcBtn").addEventListener("click", calculatecompAfterTax);
+
 function calculatecompAfterTax() {
+    const { form, resultFees, resultCompensation, comBeforeFees, inputExpenses } = DOM;
 
     let compBeforeFees = compensationBeforeFees.value;
-    let feesIncludeTax = calculateFeesIncludeTax();
-    let compensationAfterFees = compBeforeFees - feesIncludeTax;
+    let expenses = inputExpenses.value;
 
+    let feesIncludeTax = calculateFeesIncludeTax();
+    let compensationAfterFees = compBeforeFees - feesIncludeTax - expenses;
+
+    const com_before_fees = numbersToStrings(financial(compBeforeFees));
     const com_after_fees = numbersToStrings(financial(compensationAfterFees));
     const fees_include_tax = numbersToStrings(financial(feesIncludeTax))
 
+    resultCompensation.innerText = "";
+    resultFees.innerText = "";
+    comBeforeFees.innerText = "";
+
     resultCompensation.append(com_after_fees);
     resultFees.append(fees_include_tax);
+    comBeforeFees.append(com_before_fees);
+
+    //form.reset();
 }
 
 
