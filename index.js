@@ -12,7 +12,8 @@ const DOM = {
     resultFees: document.getElementById("fees"),
     resultCompensation: document.getElementById("compensation"),
     comBeforeFees: document.getElementById("comBeforeFees"),
-    inputExpenses: document.getElementById("inputExpenses")
+    inputExpenses: document.getElementById("inputExpenses"),
+    resExpenses: document.getElementById("expense")
 }
 
 
@@ -42,7 +43,7 @@ function calculateFeesIncludeTax(feesIncludeTax) {
 document.querySelector("#calcBtn").addEventListener("click", calculatecompAfterTax);
 
 function calculatecompAfterTax() {
-    const { form, resultFees, resultCompensation, comBeforeFees, inputExpenses } = DOM;
+    const { form, resultFees, resultCompensation, comBeforeFees, inputExpenses, resExpenses } = DOM;
 
     let compBeforeFees = compensationBeforeFees.value;
     let expenses = inputExpenses.value;
@@ -52,16 +53,18 @@ function calculatecompAfterTax() {
 
     const com_before_fees = numbersToStrings(financial(compBeforeFees));
     const com_after_fees = numbersToStrings(financial(compensationAfterFees));
-    const fees_include_tax = numbersToStrings(financial(feesIncludeTax))
+    const fees_include_tax = numbersToStrings(financial(feesIncludeTax));
+    const res_expenses = numbersToStrings(financial(expenses));
 
     resultCompensation.innerText = "";
     resultFees.innerText = "";
     comBeforeFees.innerText = "";
+    resExpenses.innerText = "";
 
     resultCompensation.append(com_after_fees);
     resultFees.append(fees_include_tax);
     comBeforeFees.append(com_before_fees);
-
+    resExpenses.append(res_expenses)
     //form.reset();
 }
 
