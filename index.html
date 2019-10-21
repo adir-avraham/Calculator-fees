@@ -3,7 +3,6 @@
 
 <head>
     <title>מחשבון שכ"ט</title>
-    <link rel="stylesheet" href="fontawesome.min.css">
     <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" href="mycss.css">
 </head>
@@ -21,12 +20,13 @@
             <div class="form-group">
                 <label for="inputCompensation">הכנס/י סכום הפיצוי שהתקבל</label>
                 <input type="number" class="form-control" id="inputCompensation" placeholder="סכום הפיצוי שהתקבל">
+                <div class="invalid-feedback">.יש למלא סכום הפיצוי שהתקבל</div>
             </div>
             <div class="form-group">
                 <label for="inputRateOfFees">בחר/י שיעור שכר הטרחה לחיוב</label>
                 <!-- <input type="number" class="form-control" id="inputRateOfFees" placeholder='שיעוור שכ"ט באחוזים'> -->
                 <select type="number" id="inputRateOfFees" class="form-control">
-                    <option selected>שיעור שכר טרחה באחוזים</option>
+                    <option selected value="">שיעור שכר טרחה באחוזים</option>
                     <option type="number" value="8">8%</option>
                     <option type="number" value="10">10%</option>
                     <option type="number" value="11">11%</option>
@@ -37,10 +37,12 @@
                     <option type="number" value="22.5">22.5%</option>
                     <option type="number" value="25">25%</option>
                 </select>
+                <div class="invalid-feedback">שדה חובה*</div>
             </div>
             <div class="form-group">
                 <label for="inputRateOfTax">הכנס/י שיעור מע"מ באחוזים</label>
                 <input type="number" class="form-control" id="inputRateOfTax" placeholder='שיעוור מע"מ באחוזים'>
+                <div class="invalid-feedback">שדה חובה*</div>
             </div>
             <div class="form-group">
                 <label for="inputExpenses">הכנס/י סך הוצאות ניהול התיק</label>
@@ -76,7 +78,7 @@
             <button class="btn btn-light mr-2" onclick="print()">הדפס חישוב</button>
         </div>
     </div>
-
+    <script src="jQuery.js"></script>
     <script src="index.js"></script>
 </body>
 

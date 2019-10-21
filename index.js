@@ -13,7 +13,9 @@ const DOM = {
     resultCompensation: document.getElementById("compensation"),
     comBeforeFees: document.getElementById("comBeforeFees"),
     inputExpenses: document.getElementById("inputExpenses"),
-    resExpenses: document.getElementById("expense")
+    resExpenses: document.getElementById("expense"),
+    input_compensation: document.getElementById("inputCompensation"),
+    input_compensation_err_msg: document.getElementById("inputCompensationMsg")
 }
 
 
@@ -24,7 +26,38 @@ function convert(rate) {
     return rate;
 }
 
+//validation
+//=========================================================
 
+$("#inputCompensation").on("input", function (event) {
+    const { value } = event.currentTarget;
+    while (value) {
+        return $("#inputCompensation").removeClass("is-invalid")
+    }
+    return $("#inputCompensation").addClass("is-invalid")
+})
+
+$("#inputRateOfFees").on("input", function (event) {
+    const { value } = event.currentTarget;
+    while (value) {
+        return $("#inputRateOfFees").removeClass("is-invalid")
+    }
+    return $("#inputRateOfFees").addClass("is-invalid")
+})
+
+$("#inputRateOfTax").on("input", function (event) {
+    const { value } = event.currentTarget;
+    while (value) {
+        return $("#inputRateOfTax").removeClass("is-invalid")
+    }
+    return $("#inputRateOfTax").addClass("is-invalid")
+})
+
+function resetErrors() {
+    const { input_compensation_err_msg } = DOM;
+    input_compensation_err_msg.innerHTML = "";
+
+}
 
 // calculating 
 //=============================
@@ -42,11 +75,32 @@ function calculateFeesIncludeTax(feesIncludeTax) {
 
 document.querySelector("#calcBtn").addEventListener("click", calculatecompAfterTax);
 
+
+
 function calculatecompAfterTax() {
-    const { form, resultFees, resultCompensation, comBeforeFees, inputExpenses, resExpenses } = DOM;
+    const { resultFees, resultCompensation, comBeforeFees, inputExpenses, resExpenses } = DOM;
 
     let compBeforeFees = compensationBeforeFees.value;
+    if (!compBeforeFees) {
+        compensationBeforeFees.classList.add("is-invalid");
+    }
+    if (!rateOfTax.value) {
+        rateOfTax.classList.add("is-invalid");
+    }
+    if (!rateOfFees.value) {
+        rateOfFees.classList.add("is-invalid");
+    }
+
+    if (!compBeforeFees || !rateOfTax.value || !rateOfFees.value) {
+        return;
+    } else {
+        compensationBeforeFees.classList.remove("is-invalid");
+        rateOfTax.classList.remove("is-invalid");
+        rateOfFees.classList.remove("is-invalid");
+    }
+
     let expenses = inputExpenses.value;
+
 
     let feesIncludeTax = calculateFeesIncludeTax();
     let compensationAfterFees = compBeforeFees - feesIncludeTax - expenses;
@@ -54,7 +108,11 @@ function calculatecompAfterTax() {
     const com_before_fees = numbersToStrings(financial(compBeforeFees));
     const com_after_fees = numbersToStrings(financial(compensationAfterFees));
     const fees_include_tax = numbersToStrings(financial(feesIncludeTax));
-    const res_expenses = numbersToStrings(financial(expenses));
+    let res_expenses = numbersToStrings(financial(expenses));
+    if (isNaN(res_expenses)) {
+        res_expenses = "0"
+    } 
+
 
     resultCompensation.innerText = "";
     resultFees.innerText = "";
