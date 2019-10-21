@@ -134,7 +134,6 @@ function numbersToStrings(numberType) {
 
 
 
-
 //functions 
 //===============================
 function formatNumber(num) {
@@ -143,14 +142,15 @@ function formatNumber(num) {
 
 
 
-// // buttons events
-// //================================
 
-// document.querySelector("#reset").addEventListener("click", reset);
+// restart form + results 
+//================================================
+$("#restartBtn").on("click", restartResults)
 
-// function reset() {
-//      const reset = document.querySelector("#compensation", "fees");
-//      reset = reset.innerHTML = "";
-// }
-
-
+function restartResults() {
+    const { resultFees, resultCompensation, comBeforeFees, resExpenses } = DOM;
+    resultFees.innerText = "";
+    resultCompensation.innerText = "";
+    comBeforeFees.innerText = "";
+    resExpenses.innerText = "";
+}
