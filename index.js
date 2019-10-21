@@ -30,33 +30,24 @@ function convert(rate) {
 //=========================================================
 
 $("#inputCompensation").on("input", function (event) {
-    const { value } = event.currentTarget;
-    while (value) {
-        return $("#inputCompensation").removeClass("is-invalid")
-    }
-    return $("#inputCompensation").addClass("is-invalid")
+    validation(event, "#inputCompensation")
 })
 
 $("#inputRateOfFees").on("input", function (event) {
-    const { value } = event.currentTarget;
-    while (value) {
-        return $("#inputRateOfFees").removeClass("is-invalid")
-    }
-    return $("#inputRateOfFees").addClass("is-invalid")
+    validation(event, "#inputRateOfFees")
 })
 
 $("#inputRateOfTax").on("input", function (event) {
-    const { value } = event.currentTarget;
-    while (value) {
-        return $("#inputRateOfTax").removeClass("is-invalid")
-    }
-    return $("#inputRateOfTax").addClass("is-invalid")
+    validation(event, "#inputRateOfTax")
 })
 
-function resetErrors() {
-    const { input_compensation_err_msg } = DOM;
-    input_compensation_err_msg.innerHTML = "";
 
+function validation (event, element) {
+    const { value } = event.currentTarget;
+    while (value) {
+        return $(element).removeClass("is-invalid")
+    }
+    return $(element).addClass("is-invalid")
 }
 
 // calculating 

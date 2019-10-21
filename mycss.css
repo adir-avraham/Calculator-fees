@@ -4,7 +4,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat; */
     font-family: myFirstFont;
-    background-color: #212121; 
+    background-color:#263238; 
     
 }
 
@@ -24,7 +24,7 @@ body {
 
 
 .bbb {
-    background-color: #e65100;
+    background-color: #009688 ;
     color: white;
 
 }
