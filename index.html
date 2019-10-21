@@ -3,6 +3,7 @@
 
 <head>
     <title>מחשבון שכ"ט</title>
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" href="mycss.css">
 </head>
@@ -47,7 +48,7 @@
             <div class="form-group">
                 <label for="inputExpenses">הכנס/י סך הוצאות ניהול התיק</label>
                 <input type="number" class="form-control" id="inputExpenses" placeholder="סכום הוצאות ניהול התיק">
-                <small id="expenses" class="form-text  text-white">הוצאות: נסיעות, חניות, אגרות, שליחויות, דואר,
+                <small id="expenses" class="form-text text-muted text-white">הוצאות: נסיעות, חניות, אגרות, שליחויות, דואר,
                     צילומים וכיו"ב</small>
             </div>
             <button id="restartBtn" type="reset" value="Reset" class="btn btn-primary mr-2">חישוב חדש</button>
@@ -75,7 +76,7 @@
                     </tr>
                 </thead>
             </table>
-            <button class="btn btn-light mr-2" onclick="print()">הדפס חישוב</button>
+            <button class="btn btn-info mr-2" onclick="print()"><i class="icon ion-md-print"></i> הדפס</button>
         </div>
     </div>
     <script src="jQuery.js"></script>
