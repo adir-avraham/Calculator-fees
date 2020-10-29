@@ -1,0 +1,19 @@
+body {
+    font-family: myFirstFont, sans-serif;
+    background-color:#263238; 
+}
+
+@font-face {
+    font-family: myFirstFont;
+    src: url(./Varela_Round/VarelaRound-Regular.ttf);
+}
+
+.bbb {
+    background-color: #009688 ;
+    color: white;
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+}

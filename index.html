@@ -1,88 +1,91 @@
 <!DOCTYPE html>
-<html>
+<html dir="rtl" lang="he">
 
 <head>
-    <title>מחשבון שכ"ט</title>
+    <title>מחשבון שכ"ט עו"ד</title>
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="bootstrap.css">
-    <link rel="stylesheet" href="mycss.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/mycss.css">
     <meta name="viewport" content="width=device-width" , initial-scal-="1.0">
     <meta name="google-site-verification" content="wNHoF2g-9yBHalCg-ERssTNMOuWh265BmZQpEFjTkco" />
 </head>
 
-<body>
+<body class="text-right">
     <div class="jumbotron jumbotron-fluid p-4 bbb">
         <div class="container">
             <h1 class="display-4">מחשבון שכר טרחת עורך דין</h1>
-            <p class="lead">.מחשבון זה עורך חישוב שכר טרחת עורך דין ויתרת הפיצוי ללקוח בתיקים בהם שכר הטרחה מבוסס על
-                אחוזים</p>
+            <p class="lead">מחשבון זה עורך חישוב שכר טרחת עורך דין ויתרת הפיצוי ללקוח בתיקים בהם שכר הטרחה מבוסס על
+                אחוזים.</p>
         </div>
     </div>
     <div class="container text-white">
-        <form id="form" class="float-xl-right col-xl-6">
-            <div class="form-group">
-                <label for="inputCompensation">הכנס/י סכום הפיצוי שהתקבל</label>
-                <input type="number" class="form-control" id="inputCompensation" placeholder="סכום הפיצוי שהתקבל">
-                <div class="invalid-feedback">.יש למלא סכום הפיצוי שהתקבל</div>
+        <div class="row">
+            <div class="col-lg-6">
+                <form id="form">
+                <div class="form-group">
+                    <label for="inputCompensation">הכנס/י סכום הפיצוי שהתקבל</label>
+                    <input type="number" class="form-control" id="inputCompensation" placeholder="סכום הפיצוי שהתקבל">
+                    <div class="invalid-feedback">*יש למלא סכום הפיצוי שהתקבל</div>
+                </div>
+                <div class="form-group">
+                    <label for="inputRateOfFees">בחר/י שיעור שכר הטרחה לחיוב</label>
+                    <select type="number" id="inputRateOfFees" class="form-control">
+                        <option selected value="">שיעור שכר טרחה באחוזים</option>
+                        <option type="number" value="8">8%</option>
+                        <option type="number" value="10">10%</option>
+                        <option type="number" value="11">11%</option>
+                        <option type="number" value="13">13%</option>
+                        <option type="number" value="15">15%</option>
+                        <option type="number" value="17.5">17.5%</option>
+                        <option type="number" value="20">20%</option>
+                        <option type="number" value="22.5">22.5%</option>
+                        <option type="number" value="25">25%</option>
+                    </select>
+                    <div class="invalid-feedback">*שדה חובה</div>
+                </div>
+                <div class="form-group">
+                    <label for="inputRateOfTax">הכנס/י שיעור מע"מ באחוזים</label>
+                    <input type="number" class="form-control" id="inputRateOfTax" placeholder='שיעוור מע"מ באחוזים'>
+                    <div class="invalid-feedback">*שדה חובה</div>
+                </div>
+                <div class="form-group">
+                    <label for="inputExpenses">הכנס/י סך הוצאות ניהול התיק</label>
+                    <input type="number" class="form-control" id="inputExpenses" placeholder="סכום הוצאות ניהול התיק">
+                    <small id="expenses" class="form-text text-muted text-white">הוצאות: נסיעות, חניות, אגרות, שליחויות, דואר,
+                        צילומים וכיו"ב.</small>
+                    </div>
+                    <div class="mb-1">
+                        <button id="calcBtn" type="button" class="btn btn-success ml-2"><i class="icon ion-ios-calculator"></i> חשב</button>
+                        <button id="restartBtn" type="reset" value="Reset" class="btn btn-danger"><i class="ion-ios-brush"></i> אתחל</button>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="inputRateOfFees">בחר/י שיעור שכר הטרחה לחיוב</label>
-                <!-- <input type="number" class="form-control" id="inputRateOfFees" placeholder='שיעוור שכ"ט באחוזים'> -->
-                <select type="number" id="inputRateOfFees" class="form-control">
-                    <option selected value="">שיעור שכר טרחה באחוזים</option>
-                    <option type="number" value="8">8%</option>
-                    <option type="number" value="10">10%</option>
-                    <option type="number" value="11">11%</option>
-                    <option type="number" value="13">13%</option>
-                    <option type="number" value="15">15%</option>
-                    <option type="number" value="17.5">17.5%</option>
-                    <option type="number" value="20">20%</option>
-                    <option type="number" value="22.5">22.5%</option>
-                    <option type="number" value="25">25%</option>
-                </select>
-                <div class="invalid-feedback">שדה חובה*</div>
-            </div>
-            <div class="form-group">
-                <label for="inputRateOfTax">הכנס/י שיעור מע"מ באחוזים</label>
-                <input type="number" class="form-control" id="inputRateOfTax" placeholder='שיעוור מע"מ באחוזים'>
-                <div class="invalid-feedback">שדה חובה*</div>
-            </div>
-            <div class="form-group">
-                <label for="inputExpenses">הכנס/י סך הוצאות ניהול התיק</label>
-                <input type="number" class="form-control" id="inputExpenses" placeholder="סכום הוצאות ניהול התיק">
-                <small id="expenses" class="form-text text-muted text-white">הוצאות: נסיעות, חניות, אגרות, שליחויות, דואר,
-                    צילומים וכיו"ב</small>
-            </div>
-            <button id="restartBtn" type="reset" value="Reset" class="btn btn-primary mr-2">חישוב חדש</button>
-            <button type="reset" value="Reset" class="btn btn-danger mr-2">נקה שדות</button>
-            <button id="calcBtn" type="button" class="btn btn-success">חשב</button>
-        </form>
-        <div class="row text-white">
-            <table class="table mt-4 border-bottom-0 text-white">
-                <thead class="border-bottom-0">
+            <div class="col-lg-6 text-white">
+                <table class="table mt-4 border-bottom-0 text-white">
+                    <thead class="border-bottom-0">
+                        <tr>
+                            <td class="border-bottom-0">סך פיצוי שהתקבל:</td>
+                            <td id="comBeforeFees"></td>
+                        </tr>
+                        <tr>
+                            <td class="border-bottom-0" scope="col">שכר טרחה (כולל מע"מ):</td>
+                            <td id="fees" scope="col"></td>
+                        </tr>
+                        <tr>
+                            <td class="border-bottom-0" scope="col">הוצאות ניהול תיק:</td>
+                            <td id="expense" scope="col"></td>
+                        </tr>
                     <tr>
-                        <td id="comBeforeFees"></td>
-                        <td class="border-bottom-0">:סך פיצוי שהתקבל</td>
-                    </tr>
-                    <tr>
-                        <td id="fees" scope="col"></td>
-                        <td class="border-bottom-0" scope="col">:(שכר טרחה (כולל מע"מ</td>
-                    </tr>
-                    <tr>
-                        <td id="expense" scope="col"></td>
-                        <td class="border-bottom-0" scope="col">:הוצאות ניהול תיק</td>
-                    </tr>
-                    <tr>
+                        <td class="border-bottom-0" scope="col">יתרת פיצוי ללקוח:</td>
                         <td id="compensation" scope="col"></td>
-                        <td class="border-bottom-0" scope="col">:יתרת פיצוי ללקוח</td>
                     </tr>
                 </thead>
             </table>
-            <button class="btn btn-info mr-2" onclick="print()"><i class="icon ion-md-print"></i> הדפס</button>
+            <button class="btn btn-info float-left mb-2" onclick="print()"><i class="icon ion-md-print"></i> הדפס</button>
+        </div>
         </div>
     </div>
-    <script src="jQuery.js"></script>
-    <script src="index.js"></script>
+    <script src="./js/jQuery.js"></script>
+    <script src="./js/index.js"></script>
 </body>
-
 </html>
